@@ -30,6 +30,26 @@ let busObject = {
         "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 };
 
+const servicesArray = [carObject, busObject, bikeObject];
+
+
+document.getElementById("search-btn").addEventListener("click", function () {
+    const value = document.getElementById("search-value").value;
+
+    for (let i = 0; i <servicesArray.length; i++) {
+    const element =servicesArray[i];
+        if (value.toLowerCase() === element.vehicle.toLowerCase()) {
+            document.getElementById("main-section").innerHTML= '';
+        displayServices(element);
+        return;
+    }
+    
+}
+})
+
+
+
+
 /*
 1,access the main section by using id
 2,create a div element by createElement
@@ -67,9 +87,18 @@ function displayServices(service) {
     // console.log(service);
 }
 
-displayServices(carObject);
-displayServices(busObject);
-displayServices(bikeObject);
+// displayServices(carObject);
+// displayServices(busObject);
+// displayServices(bikeObject);
+
+function displayAllArticles(arr) {
+    for (let i = 0; i < arr.length; i++){
+        const element = arr[i];
+        displayServices(element);
+    }
+}
+
+displayAllArticles(servicesArray);
 
 
 // handle booking or buy
